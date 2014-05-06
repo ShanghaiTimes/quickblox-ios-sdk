@@ -236,12 +236,12 @@
             switch (indexPath.row) {
                 // TUploadFile
                 case 0:{
-                    NSData *file = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"London" ofType:@"jpg"]];
+                    NSData *file = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Pro" ofType:@"pdf"]];
                     
                     if(withContext){
-                        [QBContent TUploadFile:file fileName:@"Great Image" contentType:@"image/png" isPublic:YES delegate:self context:testContext];
+                        [QBContent TUploadFile:file fileName:@"Book" contentType:@"book/pdf" isPublic:YES delegate:self context:testContext];
                     }else{
-                        [QBContent TUploadFile:file fileName:@"Great Image" contentType:@"image/png" isPublic:YES delegate:self];
+                        [QBContent TUploadFile:file fileName:@"Great Image" contentType:@"book/pdf" isPublic:YES delegate:self];
                     }
                 }
                     break;
@@ -427,11 +427,11 @@
 }
 
 -(void)setProgress:(float)progress{
-//     NSLog(@"setProgress %f", progress);
+     NSLog(@"Downloading: %f ", progress);
 }
 
 -(void)setUploadProgress:(float)progress{
-    NSLog(@"setUploadProgress %f", progress);
+    NSLog(@"Uploading progress %f", progress);
 }
 
 @end

@@ -53,7 +53,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -74,6 +74,8 @@
         case 4:
             numberOfRows = 13;
             break;
+        case 5:
+            numberOfRows = 3;
     }
     return numberOfRows;
 }
@@ -96,6 +98,10 @@
         case 4:
             headerTitle = @"Rooms";
             break;
+        case 5:
+            headerTitle = @"Dialogs";
+            break;
+            
         default:
             headerTitle = @"";
             break;
@@ -243,6 +249,22 @@
                     break;
             }
             break;
+            
+        case 5:
+            switch (indexPath.row) {
+                case 0:
+                    [cell.textLabel setText:@"Dialogs with delegate"];
+                    break;
+                
+                case 1:
+                    [cell.textLabel setText:@"Dialogs with extended request"];
+                    break;
+                    
+                case 2:
+                    [cell.textLabel setText:@"Messages with dialog ID extended Request"];
+                    break;
+            }
+            break;
         
         default:
             break;
@@ -262,8 +284,8 @@
                 // Login
                 case 0:{
                     QBUUser *user = [QBUUser user];
-                    user.ID = 291;
-                    user.password = @"supersample-ios";
+                    user.login = @"emmaemma";
+                    user.password = @"emmaemma";
                     [[QBChat instance] loginWithUser:user];
                 }
                     
@@ -311,6 +333,7 @@
                     [[QBChat instance] sendDirectPresenceWithStatus:@"morning" toUser:33];
 #else
                     [[QBChat instance] sendDirectPresenceWithStatus:@"morning" toUser:33];
+                    [[QBChat instance] dialogsWithDelegate:nil context:NULL];
 #endif
                 }
                     break;
@@ -487,11 +510,50 @@
             }
             break;
             
+       case 5:
+            switch (indexPath.row) {
+                case 0:
+                    [[QBChat instance] dialogsWithDelegate:self context:NULL];
+                    break;
+    
+                case 1:
+                {
+                    NSMutableDictionary *extendedRequest = [NSMutableDictionary new];
+                    extendedRequest[@"limit"] = @(1);
+                    extendedRequest[@"skip"] = @(1);
+                    [[QBChat instance] dialogsWithExtendedRequest:extendedRequest delegate:self];
+                }
+                    break;
+                    
+                case 2:
+                {
+                    NSMutableDictionary *extendedRequest = [NSMutableDictionary new];
+                    extendedRequest[@"limit"] = @(2);
+                    extendedRequest[@"skip"] = @(1);
+                    QBMApplePushEvent
+                    [[QBChat instance] messagesWithDialogID:@"534e395a6add6528fcf808b5" extendedRequest:extendedRequest delegate:self];
+                }
+                    break;
+            }
+            
         default:
             break;
     }
 }
 
+
+- (void)completedWithResult:(Result *)result
+{
+    if (result.success && [result isKindOfClass:[QBDialogsPagedResult class]]) {
+        QBDialogsPagedResult *pagedResult = (QBDialogsPagedResult *)result;
+        NSArray *dialogs = pagedResult.dialogs;
+        NSLog(@"Dialogs: %@", dialogs);
+    } else if (result.success && [result isKindOfClass:QBChatHistoryMessageResult.class]) {
+        QBChatHistoryMessageResult *res = (QBChatHistoryMessageResult *)result;
+        NSArray *messages = res.messages;
+        NSLog(@"Messages: %@", messages);
+    }
+}
     
 #pragma mark -
 #pragma mark QBChatDelegate

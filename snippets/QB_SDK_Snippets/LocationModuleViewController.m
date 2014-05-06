@@ -97,7 +97,7 @@
                 // Get multiple GeoData
                 case 2:{
                     QBLGeoDataGetRequest *getRequest = [[QBLGeoDataGetRequest alloc] init];
-                    getRequest.status = YES;
+                    getRequest.userName = @"user_name";
                     getRequest.lastOnly = YES;
                     getRequest.sortBy = GeoDataSortByKindLatitude;
                     getRequest.radius = 100;

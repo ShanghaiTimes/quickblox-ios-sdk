@@ -51,10 +51,23 @@
     // show Chat
     self.tabBarController.selectedIndex = 3;
     
-    // credentials
-    [QBSettings setApplicationID:92];
-    [QBSettings setAuthorizationKey:@"wJHdOcQSxXQGWx5"];
-    [QBSettings setAuthorizationSecret:@"BTFsj7Rtt27DAmT"];
+    
+    
+//    // credentials
+//    [QBSettings setApplicationID:9352];
+//    [QBSettings setAuthorizationKey:@"mYSbXRSLbD-EhMc"];
+//    [QBSettings setAuthorizationSecret:@"xSyYgk4D8Cpy76t"];
+//    
+    
+    
+    
+    //********************* STAGE SERVER *******************************
+    [QBSettings setApplicationID:6];
+    [QBSettings setAuthorizationKey:@"4EGTYEqm6ESVRVV"];
+    [QBSettings setAuthorizationSecret:@"Zh7mgXWzLxamK8x"];
+    [QBSettings setServerChatDomain:@"chatstage.quickblox.com"];
+    [QBSettings setServerApiDomain:@"http://api.stage.quickblox.com"];
+    
     
     return YES;
 }

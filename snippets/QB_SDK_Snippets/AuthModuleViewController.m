@@ -79,8 +79,8 @@
                 // Create session with User auth
                 case 1:{
                     QBASessionCreationRequest *extendedAuthRequest = [QBASessionCreationRequest request];
-                    extendedAuthRequest.userLogin = @"supersample-ios"; // ID: 218651
-                    extendedAuthRequest.userPassword = @"supersample-ios";
+                    extendedAuthRequest.userLogin = @"emmaemma"; // ID:
+                    extendedAuthRequest.userPassword = @"emmaemma";
                     
                     if(withContext){
                         [QBAuth createSessionWithExtendedRequest:extendedAuthRequest delegate:self context:testContext];

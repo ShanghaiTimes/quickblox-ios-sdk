@@ -66,9 +66,9 @@
             // Get object with ID
             case 0:{
                 if(withContext){
-                    [QBCustomObjects objectWithClassName:@"SuperSample" ID:@"51c9ab92535c12951b0032d6" delegate:self context:testContext];
+                    [QBCustomObjects objectWithClassName:@"Locations" ID:@"51c9ab92535c12951b0032d6" delegate:self context:testContext];
                 }else{
-                    [QBCustomObjects objectWithClassName:@"SuperSample" ID:@"51c9ab92535c12951b0032d6" delegate:self];
+                    [QBCustomObjects objectWithClassName:@"Locations" ID:@"51c9ab92535c12951b0032d6" delegate:self];
                 }
             }
                 break;
@@ -76,9 +76,9 @@
             // Get object with IDs
             case 1:{
                 if(withContext){
-                    [QBCustomObjects objectsWithClassName:@"SuperSample" IDs:@[@"51c9aafe535c127d98004a13",@"51c9aafe535c127d98004a14", @"51c9aafe535c127d98004a16"] delegate:self context:testContext];
+                    [QBCustomObjects objectsWithClassName:@"Locations" IDs:@[@"51c9aafe535c127d98004a13",@"51c9aafe535c127d98004a14", @"51c9aafe535c127d98004a16"] delegate:self context:testContext];
                 }else{
-                    [QBCustomObjects objectsWithClassName:@"SuperSample" IDs:@[@"51c9aafe535c127d98004a13",@"51c9aafe535c127d98004a14", @"51c9aafe535c127d98004a16"] delegate:self];
+                    [QBCustomObjects objectsWithClassName:@"Locations" IDs:@[@"51c9aafe535c127d98004a13",@"51c9aafe535c127d98004a14", @"51c9aafe535c127d98004a16"] delegate:self];
                 }
             }
                 break;
@@ -94,15 +94,15 @@
                     [getRequest setObject:@"vote" forKey:@"output"];
                     
                     if(withContext){ //SuperSample
-                        [QBCustomObjects objectsWithClassName:@"SuperSample" extendedRequest:getRequest delegate:self context:testContext];
+                        [QBCustomObjects objectsWithClassName:@"Message" extendedRequest:getRequest delegate:self context:testContext];
                     }else{
-                        [QBCustomObjects objectsWithClassName:@"SuperSample" extendedRequest:getRequest delegate:self];
+                        [QBCustomObjects objectsWithClassName:@"Message" extendedRequest:getRequest delegate:self];
                     }
                 }else{
                     if(withContext){
-                        [QBCustomObjects objectsWithClassName:@"SuperSample" delegate:self context:testContext];
+                        [QBCustomObjects objectsWithClassName:@"Message" delegate:self context:testContext];
                     }else{
-                        [QBCustomObjects objectsWithClassName:@"SuperSample" delegate:self];
+                        [QBCustomObjects objectsWithClassName:@"Message" delegate:self];
                     }
                 }
             }
